@@ -5,7 +5,7 @@ from pprint import pformat
 T = TypeVar('T')
 
 def generate_powerset(s: AbstractSet[T]) -> Iterable[Set[T]]:
-  return map(lambda l: sorted(set(l)), chain.from_iterable(combinations(s, r) for r in range(len(s)+1)))
+  return map(set, chain.from_iterable(combinations(s, r) for r in range(len(s)+1)))
 
 def jaccard_index(a: Set[T], b: Set[T]) -> float:
   return len(a.intersection(b)) / len(a.union(b))
